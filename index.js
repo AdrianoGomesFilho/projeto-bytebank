@@ -1,30 +1,5 @@
-class Cliente {
-    nome;
-    cpf;
-}
-
-class ContaCorrente {
-    agencia;
-    _saldo = 0;
-
-    sacar(valor) {
-        if (this._saldo >= valor) { //o this faz referência a própria classe "molde"
-            this._saldo -= valor;
-        }
-    }
-
-    depositar(valor) {
-        if (valor > 0) {
-            this._saldo += valor;
-            console.log(this.#saldo);
-        } 
-    }
-}
-
-/* usar _saldo (underline na frente do atributo)
-é uma convenção para dizer "não mexa, é 'privado'" não acesse ele fora da classe. Está se estudando a implementação da #saldo para privar, mas não adotaram ainda oficialmente
-
-*/
+import { Cliente } from "./Cliente.js";
+import { ContaCorrente } from "./ContaCorrente.js"
 
 const cliente1 = new Cliente();
 cliente1.nome = "Ricardo";
@@ -36,9 +11,19 @@ cliente2.cpf = 88822233309;
 
 const contaCorrenteRicardo = new ContaCorrente();
 contaCorrenteRicardo.agencia = 1001;
-contaCorrenteRicardo.depositar (100);
-contaCorrenteRicardo.depositar (100);
-contaCorrenteRicardo.depositar (100);
-contaCorrenteRicardo.sacar(50)
-console.log(contaCorrenteRicardo);
+contaCorrenteRicardo.cliente = cliente1;
+contaCorrenteRicardo.depositar(500);
+
+
+const conta2 = new ContaCorrente();
+conta2.cliente = cliente2;
+conta2.agencia = 102;
+
+
+let valor = 200;
+contaCorrenteRicardo.transferir(valor, conta2);
+
+console.log(`Valor ${valor}`);
+console.log(conta2);
+
 
