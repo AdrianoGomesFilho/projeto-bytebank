@@ -1,16 +1,42 @@
-import { Cliente } from "./Cliente.js";
-import { ContaCorrente } from "./ContaCorrente.js"
-import { Conta } from "./Conta.js";
+class Cliente{
+    nome;
+    cpf;
+}
 
-const cliente1 = new Cliente("Ricardo", 11122233309);
+class ContaCorrente {
+    agencia;
+    #saldo = 0; // Precisamos estipular um valor
 
-const contaCorrenteRicardo = new ContaCorrente(cliente1, 1001);
+    sacar (valor) {
+        if (this.#saldo >= valor) {
+            this.#saldo -= valor;
+            console.log(this.#saldo);
+        }
+    }
 
-contaCorrenteRicardo.depositar(500);
-contaCorrenteRicardo.sacar(100);
+    depositar(valor) {
+        if (valor > 0) {
+            this.saldo += valor;
+        }
+    }
+}
 
-const contaPoupanca = new Conta(50, cliente1, 1001);
 
-contaCorrenteRicardo.teste();
 
-console.log(contaCorrenteRicardo);
+
+const cliente1 = new Cliente();
+cliente1.nome = "Ricardo";
+cliente1.cpf = 11122233309;
+
+const cliente2 = new Cliente();
+cliente2.nome = "Alice";
+cliente2.cpf = 88822233309;
+
+const contaCorrenteRicardo = new ContaCorrente();
+
+contaCorrenteRicardo.agencia = 1001;
+
+contaCorrenteRicardo.depositar (100);
+contaCorrenteRicardo.sacar(50);
+
+console.log(contaCorrenteRicardo)
