@@ -1,0 +1,16 @@
+{
+  "name": "bytebank",
+  "version": "1.0.0",
+  "description": "Projeto do bitebank",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdrianoGomesFilho/projeto-bytebank.git"
+  },
+  "author": "Adriano Gomes",
+  "license": "ISC",
+  "type": "module"
+}
