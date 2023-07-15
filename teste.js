@@ -1,13 +1,33 @@
-class Produto {
-    constructor(nomeEscolhido, precoEscolhido){
-    this.nome = nomeEscolhido;
-    this.preco = precoEscolhido;
+class ContaCorrente {
+    agencia;
+    cliente;
+    _saldo = 0;
+
+    sacar(valor) {
+        if (this._saldo >= valor) {
+            this._saldo -= valor;
+            return valor;
+        }
     }
-    calculaDesconto(preco) {
-    return this.preco * 0.1;
+
+    depositar(valor) {
+        if (valor <= 0) {
+            return;
+        }
+        
+        this._saldo += valor;
     }
-    }
-    var produto1 = new Produto('Blusa', 120);
-    var produto2 = new Produto('Blusa', 300);
-    produto1.calculaDesconto();
-    produto2.calculaDesconto();
+    
+    transferir(valor, conta){
+        const valorSacado = this.sacar(valor);
+        conta.depositar(valorSacado);
+    } }
+    
+    const contaCorrenteRicardo = new ContaCorrente();
+    const contaCorrenteAlice = new ContaCorrente();
+    let valor = 200;
+    contaCorrenteRicardo.agencia = 1001;
+    contaCorrenteRicardo.transferir(valor, contaCorrenteAlice);
+    
+    console.log(valor)
+    console.log(contaCorrenteAlice);
