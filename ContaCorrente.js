@@ -18,7 +18,9 @@ export class ContaCorrente {
     
     _saldo = 0; // Precisamos estipular um valor
     
-    atribuirCliente() {
+
+    get saldo() {
+        return this._saldo;
     }
 
     sacar(valor) {
