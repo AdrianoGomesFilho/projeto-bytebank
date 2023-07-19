@@ -1,8 +1,7 @@
 import { Cliente } from "./Cliente.js";
 
 export class ContaCorrente {
-    agencia;
-    _cliente;
+    static numeroDeContas = 0;
     
     set cliente(novoValor) {
         if (novoValor instanceof Cliente) {
@@ -14,13 +13,15 @@ export class ContaCorrente {
         return this._cliente;
     } 
 
-    //o cliente é sem underline, pois é pelo nome cliente que chamaremos no index
-    
-    _saldo = 0; // Precisamos estipular um valor
-    
-
     get saldo() {
         return this._saldo;
+    }
+
+    constructor(agencia, cliente) {
+        this.agencia = agencia;
+        this.cliente = cliente;
+        this._saldo = 0;
+        ContaCorrente.numeroDeContas += 1;
     }
 
     sacar(valor) {
@@ -31,8 +32,8 @@ export class ContaCorrente {
     }
 
     depositar(valor) {
-        if (valor <= 0) {
-            return; //para a execução do resto do método
+        if (valor <= 100) {
+            return;
         }
         
         this._saldo += valor;
