@@ -1,5 +1,9 @@
 export class Conta {
     constructor(saldoInicial, cliente, agencia) {
+        if (this.constructor == Conta) {
+            throw new Error("Você não poderia instanciar um objeto do tipo Conta diretamente pois ela é abstrata");
+        }
+
         this._saldo = saldoInicial;
         this._cliente = cliente;
         this._agencia = agencia;
@@ -20,8 +24,7 @@ export class Conta {
     }
 
     sacar(valor) {
-        let taxa = 1;
-        return this._sacar(valor, taxa);
+        //deixamos em branco, cada conta vai indicar a taxa
     }
 
     _sacar(valor, taxa) {
@@ -44,9 +47,5 @@ export class Conta {
         }
         const valorSacado = this.sacar(valor);
         conta.depositar(valorSacado);
-    }
-
-    teste() {
-        console.log("teste na classe conta");
     }
 }
