@@ -1,33 +1,14 @@
-class ContaCorrente {
-    agencia;
-    cliente;
-    _saldo = 0;
-
-    sacar(valor) {
-        if (this._saldo >= valor) {
-            this._saldo -= valor;
-            return valor;
+class Cliente{
+    constructor(nome, cpf) {
+            this.nome = nome;
+            this._cpf = cpf;
+        }
+        get cpf() {
+            this._cpf;
+            return this._cpf;
         }
     }
-
-    depositar(valor) {
-        if (valor <= 0) {
-            return;
-        }
-        
-        this._saldo += valor;
-    }
     
-    transferir(valor, conta){
-        const valorSacado = this.sacar(valor);
-        conta.depositar(valorSacado);
-    } }
+    const cliente2 = new Cliente("Alice", 88822233309);
+    console.log(cliente2.cpf);
     
-    const contaCorrenteRicardo = new ContaCorrente();
-    const contaCorrenteAlice = new ContaCorrente();
-    let valor = 200;
-    contaCorrenteRicardo.agencia = 1001;
-    contaCorrenteRicardo.transferir(valor, contaCorrenteAlice);
-    
-    console.log(valor)
-    console.log(contaCorrenteAlice);
