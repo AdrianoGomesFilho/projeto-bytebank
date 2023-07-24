@@ -24,7 +24,7 @@ export class Conta {
     }
 
     sacar(valor) {
-        //deixamos em branco, cada conta vai indicar a taxa
+        throw new Error ("O método sacar da conta é abstrato");
     }
 
     _sacar(valor, taxa) {
