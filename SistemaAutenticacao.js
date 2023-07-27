@@ -2,13 +2,13 @@
 
 export class SistemaAutenticacao {
     static login(autenticavel, senha) {
-        if(SistemaAutenticacao.ehAutenticavel(autenticavel)) {
-            return autenticavel.autenticar(senha);
+        if (SistemaAutenticacao.ehAutenticavel(autenticavel)){
+            return autenticavel.autenticar(senha); //Aqui ele cospe a senha, se verdadeiro. Ele verifica se o cliente/diretor/gerente possuem o método "autenticar(senha)"
         }
-        return false;
-    }
+            return false;
+        }
 
     static ehAutenticavel(autenticavel) {
-        "autenticar" in autenticavel
+          return "autenticar" in autenticavel && autenticavel.autenticar instanceof Function;
+        }
     }
-}
